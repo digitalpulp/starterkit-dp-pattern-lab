@@ -10,6 +10,8 @@ use Symfony\Component\Yaml\Yaml;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
+define('SHOULD_GENERATE_AEM', FALSE);
+
 $generate_cmd = new Commando\Command();
 
 $generate_cmd->option()
@@ -75,7 +77,9 @@ function generate_file($source_filename, $force = FALSE) {
 
     generate_pattern_lab($definition_data, $force, $noStyles);
 
-    generate_aem_component($definition_data, $force);
+    if (SHOULD_GENERATE_AEM) {
+      generate_aem_component($definition_data, $force);
+    }
   }
   else {
     $log->err("YAML file does not exist: " . $source_yaml_filename);
