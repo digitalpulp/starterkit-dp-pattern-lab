@@ -1,0 +1,30 @@
+@mixin heading-h1 ($spacing: .1, $color: $color-text-color) {
+  @extend %font-gotham-condensed-bold;
+  @include font-size(100, 85);
+  color: $color;
+  letter-spacing: rem($spacing);
+  text-transform: uppercase;
+
+  @include mq($bp1024max) {
+    @include font-size(85, 70);
+  }
+
+  @include mq($bp768max) {
+    @include font-size(55, 45);
+    margin-bottom: rem(18);
+  }
+}
+
+@mixin section-title-h2 {
+  .f--section-title {
+    margin-bottom: rem(25);
+
+    h2 {
+      @include font-size(32, 40);
+
+      @include mq($bp1024max) {
+        @include font-size(26, 32);
+      }
+    }
+  }
+}

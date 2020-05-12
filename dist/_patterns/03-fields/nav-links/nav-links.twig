@@ -1,0 +1,16 @@
+{% extends 'base-field' %}
+
+{% set name = 'nav-links' %}
+
+{% block content %}
+
+  <ul>
+    {% for link in links %}
+    <li>
+      <a href="{{ link.url }}">{{ link.title }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+
+
+{% endblock content %}

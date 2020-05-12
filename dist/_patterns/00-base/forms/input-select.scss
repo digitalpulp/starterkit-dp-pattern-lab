@@ -1,0 +1,39 @@
+.fi--form-item {
+  .select-wrap {
+    position: relative;
+    border: 1px solid $color-very-light-grey;
+    background-color: $color-white;
+
+    select {
+      @include padding(null rem(10));
+      @include font-size(16, 21);
+      width: 100%;
+      height: rem(50);
+      border: 0;
+      background: transparent;
+      background-image: none;
+      color: $color-charcoal;
+      box-shadow: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+
+      &::-ms-expand {
+        display: none;
+      }
+    }
+
+    svg {
+      @include centered('y');
+      right: rem(25);
+      width: 18px;
+      height: 10px;
+      pointer-events: none;
+      user-select: none;
+
+      polygon {
+        fill: $color-black;
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{% extends "base-field" %}
+
+{% set name = "wysiwyg" %}
+
+{% set field_variant = field_variant | default(null) %}
+
+{% block content %}
+
+  {{ markup|raw }}
+
+{% endblock %}

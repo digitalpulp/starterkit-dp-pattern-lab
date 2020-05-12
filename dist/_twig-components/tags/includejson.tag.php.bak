@@ -1,0 +1,242 @@
+<?php
+
+use Twig\Node\Expression\AbstractExpression;
+use Twig\Node\Expression\ArrayExpression;
+use Twig\Node\Expression\Binary\ConcatBinary;
+use Twig\Node\Expression\ConstantExpression;
+use Twig\Node\Expression\NameExpression;
+
+/* 
+if (!class_exists('Project_includejson_WithJsonExpression')) {
+
+class Project_includejson_WithJsonExpression extends AbstractExpression {
+
+  public function __construct($unused, $lineno) {
+    parent::__construct([], ['unused' => $unused], $lineno);
+  }
+
+  public function compile(Compiler $compiler) {
+    $compiler->raw('$this->getContext($context, "component"
+    $compiler->raw('echo "<div>yo</div>";');
+  }
+
+}
+
+}
+*/
+
+if (!class_exists('Project_includejson_Node')) {
+
+/**
+ * Represents an include node.
+ *
+ * @author Fabien Potencier <fabien@symfony.com>
+ */
+class Project_includejson_Node extends Twig_Node
+{
+    public function __construct(Twig_Node_Expression $expr, Twig_Node_Expression $variables = null, $only = false, $ignoreMissing = false, $lineno, $tag = null)
+    {
+        $nodes = ['expr' => $expr];
+        if (null !== $variables) {
+            //var_dump($variables);exit(1);
+            $nodes['variables'] = $variables;
+        }
+
+        //var_dump($nodes);exit(1);
+        var_dump($nodes['expr']->getNode('right')->getNode('node'));exit(1);
+
+        parent::__construct($nodes, ['only' => (bool) $only, 'ignore_missing' => (bool) $ignoreMissing], $lineno, $tag);
+    }
+
+    public function compile(Twig_Compiler $compiler)
+    {
+        $compiler->addDebugInfo($this);
+
+        if ($this->getAttribute('ignore_missing')) {
+            $template = $compiler->getVarName();
+
+            $compiler
+                ->write(sprintf("$%s = null;\n", $template))
+                ->write("try {\n")
+                ->indent()
+                ->write(sprintf('$%s = ', $template))
+            ;
+
+            $this->addGetTemplate($compiler);
+
+            $compiler
+                ->raw(";\n")
+                ->outdent()
+                ->write("} catch (LoaderError \$e) {\n")
+                ->indent()
+                ->write("// ignore missing template\n")
+                ->outdent()
+                ->write("}\n")
+                ->write(sprintf("if ($%s) {\n", $template))
+                ->indent()
+                ->write(sprintf('$%s->display(', $template))
+            ;
+            $this->addTemplateArguments($compiler);
+            $compiler
+                ->raw(");\n")
+                ->outdent()
+                ->write("}\n")
+            ;
+        } else {
+            $this->addGetTemplate($compiler);
+            $compiler->raw('->display(');
+            $this->addTemplateArguments($compiler);
+            $compiler->raw(");\n");
+        }
+    }
+
+    protected function addGetTemplate(Twig_Compiler $compiler)
+    {
+        $compiler
+            ->write('$this->loadTemplate(')
+            ->subcompile($this->getNode('expr'))
+            ->raw(', ')
+            ->repr($this->getTemplateName())
+            ->raw(', ')
+            ->repr($this->getTemplateLine())
+            ->raw(')')
+        ;
+    }
+
+    protected function addTemplateArguments(Twig_Compiler $compiler)
+    {
+        if (!$this->hasNode('variables')) {
+            $compiler->raw(false === $this->getAttribute('only') ? '$context' : '[]');
+        } elseif (false === $this->getAttribute('only')) {
+            $compiler
+                ->raw('twig_array_merge($context, ')
+                ->subcompile($this->getNode('variables'))
+                ->raw(')')
+            ;
+        } else {
+            $compiler->raw('twig_to_array(');
+            $compiler->subcompile($this->getNode('variables'));
+            $compiler->raw(')');
+        }
+    }
+}
+
+}
+
+if (!class_exists("Project_includejson_TokenParser")) {
+
+/**
+ * Includes a template.
+ *
+ *   {% include 'header.html' %}
+ *     Body
+ *   {% include 'footer.html' %}
+ */
+class Project_includejson_TokenParser extends Twig_TokenParser
+{
+    public function parse(Twig_Token $token)
+    {
+        $expr = $this->parser->getExpressionParser()->parseExpression();
+
+        list($variables, $only, $ignoreMissing) = $this->parseArguments();
+
+        // DEBUG
+
+        //var_dump($expr);
+
+        //exit(1);
+
+        if ($expr instanceof ConcatBinary) {
+          // @var $expr \Twig\Node\Expression\Binary\ConcatBinary
+          $right = $expr->getNode('right');
+
+          //var_dump($right);exit(1);
+
+          //var_dump($right->getNode('node'));exit(1);
+
+          //var_dump($right->getNode('arguments'));exit(1);
+
+          $type = $expr->getNode('right')->getAttribute('type');
+
+          //var_dump($type);
+
+          //$var = new NameExpression();
+          $node = $expr->getNode('right')->getNode('node');
+
+          //var_dump($node);
+
+          //exit(1);
+
+          $left = $expr->getNode('left');
+
+          //var_dump($left);exit(1);
+
+          //$component = $expr->getNode('right')->getAttribute('component');
+
+          //var_dump($component);
+        }
+
+        $stream = $this->parser->getStream();
+
+        $source = $stream->getSourceContext();
+
+        //var_dump($source);
+
+        $path = $stream->getSourceContext()->getPath();
+
+        //var_dump($path);
+
+        $name = $stream->getSourceContext()->getName();
+
+        //echo($name);
+
+        return new Project_includejson_Node($expr, $variables, $only, $ignoreMissing, $token->getLine(), $this->getTag());
+    }
+
+    protected function parseArguments()
+    {
+        $stream = $this->parser->getStream();
+
+        $ignoreMissing = false;
+        if ($stream->nextIf(Twig_Token::NAME_TYPE, 'ignore')) {
+            $stream->expect(Twig_Token::NAME_TYPE, 'missing');
+
+            $ignoreMissing = true;
+        }
+
+        
+
+        $variables = null;
+        if ($stream->nextIf(Twig_Token::NAME_TYPE, 'withjson')) {
+            $variables = $this->parser->getExpressionParser()->parseExpression();
+
+            // override:
+
+            //$this->parser->getExpressionParser()->parseExpression();
+
+            //$lineno = $this->parser->getCurrentToken()->getLine();
+
+            //$variables = new ArrayExpression([], $lineno);
+
+            //$variables->addElement(new ConstantExpression('some title', $lineno), new ConstantExpression('title', $lineno));
+
+            
+        }
+
+        $only = false;
+        if ($stream->nextIf(Twig_Token::NAME_TYPE, 'only')) {
+            $only = true;
+        }
+
+        $stream->expect(Twig_Token::BLOCK_END_TYPE);
+
+        return [$variables, $only, $ignoreMissing];
+    }
+
+    public function getTag()
+    {
+        return 'includejson';
+    }
+}
+
+}

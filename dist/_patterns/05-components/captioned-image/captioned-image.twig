@@ -1,0 +1,9 @@
+{% extends 'base-component' %}
+
+{% set name = 'captioned-image' %}
+
+{% block content %}
+
+  {% include "fields-image" with { image: image, caption: caption } only %}
+
+{% endblock content %}

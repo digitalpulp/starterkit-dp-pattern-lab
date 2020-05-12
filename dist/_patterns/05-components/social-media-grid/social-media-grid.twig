@@ -1,0 +1,21 @@
+{% extends 'base-component' %}
+
+{% set name = 'social-media-grid' %}
+
+{% block content %}
+
+<div class="social-media-grid-inner">
+  <div class="header-container">
+
+    {% include "fields-section-title" with { title: title } only %}
+
+  </div>
+
+  <div class="juicer-feed-container">
+    <script src="https://assets.juicer.io/embed.js" type="text/javascript"></script>
+    <link href="https://assets.juicer.io/embed.css" media="all" rel="stylesheet" type="text/css"/>
+    <ul class="juicer-feed" data-feed-id="{{ feed_id }}" data-per="{{ feed_limit | default('6') }}" data-truncate="{{ char_limit }}"></ul>
+  </div>
+</div>
+
+{% endblock content %}

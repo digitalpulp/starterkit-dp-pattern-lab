@@ -1,0 +1,62 @@
+.checkbox-wrapper {
+  @include padding(rem(10) null rem(10) rem(40));
+  position: relative;
+  text-align: left;
+
+  input[type='checkbox'] {
+    position: absolute;
+    top: 0;
+    left: -9999px;
+
+    &:focus + label::before {
+      @include outline;
+    }
+
+    &:checked + label {
+      @extend %font-gotham-black;
+      color: $color-torch-red;
+
+      &::before {
+        border: 1px solid $color-torch-red;
+        background-color: $color-torch-red;
+      }
+
+      &::after {
+        border: 2px solid $color-white;
+        background-color: $color-torch-red;
+        opacity: 1;
+      }
+    }
+  }
+
+  label {
+    @extend %font-gotham-book;
+    margin-bottom: 0;
+    color: $color-charcoal;
+    cursor: pointer;
+
+    &::before,
+    &::after {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      content: '';
+    }
+
+    &::before {
+      left: 1px;
+      width: 20px;
+      height: 20px;
+      border: 1px solid $color-empress;
+      background-color: $color-white;
+    }
+
+    &::after {
+      left: 3px;
+      width: 16px;
+      height: 16px;
+      opacity: 0;
+    }
+  }
+}
+

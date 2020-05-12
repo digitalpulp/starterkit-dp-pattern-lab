@@ -1,0 +1,9 @@
+{% extends 'base-field' %}
+
+{% set name = 'date' %}
+
+{% block content %}
+
+  <time{% if timestamp %} timestamp="{{ timestamp }}"{% endif %}>{{ date }}</time>
+
+{% endblock content %}

@@ -1,0 +1,13 @@
+{% extends "base-field" %}
+
+{% set name="button" %}
+
+{% block content %}
+
+  <div class="f--button-wrapper">
+    <button type="button" class="button" aria-label="{{ ariaLabel }}">
+      {{ buttonCopy }}
+    </button>
+  </div>
+
+{% endblock %}

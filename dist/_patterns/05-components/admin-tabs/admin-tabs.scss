@@ -1,0 +1,27 @@
+.cc--admin-tabs {
+
+  .c--admin-tabs {
+    @include maxwidth;
+    @include padding(20px cols(1));
+    display: none;
+
+    @include mq($bp768) {
+
+      display: block;
+
+      > ul {
+        display: flex;
+        flex-direction: row;
+        list-style-type: none;
+
+        > li {
+          margin: 0 rem(40) 0 0;
+        }
+
+      }
+
+    }
+
+  }
+
+}

@@ -1,0 +1,29 @@
+{
+  "name":             "digitalpulp/starterkit-dp-pattern-lab",
+  "description":      "Digital Pulp's StarterKit for Twig.",
+  "keywords":         ["twig", "pattern lab", "starterkit"],
+  "homepage":         "https://digitalpulp.com",
+  "type":             "patternlab-starterkit",
+  "authors": [
+    {
+      "name":         "Sam Thompson",
+      "email":        "sthompson@digitalpulp.com"
+    }
+  ],
+  "support": {
+    "source":         "https://github.com/digitalpulp/starterkit-dp-pattern-lab/releases"
+  },
+  "require": {
+    "pattern-lab/core": "^2.0.0",
+    "pattern-lab/patternengine-twig": "^2.0.0"
+  },
+  "extra": {
+    "patternlab": {
+      "dist": {
+        "sourceDir": [
+          { "*": "*" }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{% if not noWrap %}
+
+{% if variant is iterable %}
+    {% set variant_processed = variant|join(' ') %}
+{% else %}
+    {% set variant_processed = variant %}
+{% endif %}
+
+{% if extra_classes is iterable %}
+    {% set extra_classes_processed = extra_classes|join(' ') %}
+{% else %}
+    {% set extra_classes_processed = extra_classes %}
+{% endif %}
+
+{%
+    set container_element = container_element|default('div')
+%}
+
+<{{ container_element }}
+class="clc--component-list-container clc--{{ name }} {{ (variant_processed) ? variant_processed : '' }} {{ (extra_classes_processed) ? extra_classes_processed : '' }}"
+
+{% if container_aria_label %} aria-label="{{ container_aria_label }}"{% endif %}
+
+  {% if container_aria_role %} role="{{ container_aria_role }}"{% endif %}
+
+  {% if alert_visible %} style="display: block;"{% endif %}
+
+  {% if background_image_url %} style="background-image: url('{{ background_image_url }}');"{% endif %}
+>
+
+<div class="cl--component-list cl--{{ name }}">
+{% endif %}
+
+    {% block content %}
+
+        {% for component in components %}
+
+          {% if component.type is not empty %}
+
+            {% set component_json = load_component_json(component.type) %}
+
+            {% if component_json is not empty %}
+
+              {% set component_merged_props = component_json | merge(component) %}
+
+              {% include 'components-' ~ component.type with component_merged_props %}
+
+            {% else %}
+
+              {% include 'components-' ~ component.type with component %}
+
+            {% endif %}
+
+          {% endif %}
+
+        {% endfor %}
+
+    {% endblock %}
+
+{% if not noWrap %}
+</div><!-- cl--component-list c--{{ name }} -->
+
+</{{ container_element }}><!-- clc--component-list-container ll--{{ name }} -->
+{% endif %}

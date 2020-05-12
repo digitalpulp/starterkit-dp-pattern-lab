@@ -1,0 +1,17 @@
+{% extends "base-component" %}
+
+{% set name = "header" %}
+
+{% set container_element = 'div' %}
+
+{% block content %}
+
+  <div class="main-nav-container">
+
+      {% include "components-menu-main" with { menu: mainMenu } %}
+
+      {% include "components-menu-utility" with { menu: utilityMenu } %}
+
+  </div>
+
+{% endblock %}

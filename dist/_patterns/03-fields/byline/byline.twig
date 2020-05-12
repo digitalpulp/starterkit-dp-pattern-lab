@@ -1,0 +1,9 @@
+{% extends 'base-field' %}
+
+{% set name = 'byline' %}
+
+{% block content %}
+
+  By <span class="author">{{ author }}</span>{% if date is not empty %}<span class="date">{{ date }}</span>{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,63 @@
+// http://www.color-blindness.com/color-name-hue/
+// http://chir.ag/projects/name-that-color
+
+// https://github.com/twbs/bootstrap-sass/blob/master/assets/stylesheets/bootstrap/_variables.scss
+
+// Primary
+// Secondary
+// Accent
+// Error
+// Status
+
+$color-white: #FFF;
+$color-black: #000;
+
+// black
+$color-nero: #151515;
+
+// white
+$color-white-smoke: #F0F0F0;
+
+// grey
+$color-charcoal: #4A4A4A;
+$color-empress: #767676;
+$color-very-light-grey: #CCC;
+$color-dove-gray: #666;
+
+// red
+$color-torch-red: #E60042;
+$color-venetian-red: #D50032;
+
+// blue
+$color-eastern-blue: #008996;
+
+// violet
+$color-indigo: #56058C;
+
+// Globals
+$color-body-bg: $color-white;
+$color-text-color: $color-nero;
+$color-input-placeholder: $color-charcoal;
+
+// Links
+$color-link: $color-torch-red;
+$color-link-hover: $color-indigo;
+
+$color-link-light: $color-white;
+
+$link-default-decoration: underline;
+$link-default-hover-decoration: underline;
+
+$link-primary-decoration: none;
+$link-primary-hover-decoration: underline;
+
+// Buttons
+$button-default-bg: $color-torch-red;
+$button-default-color: $color-white;
+$button-default-hover-bg: $color-indigo;
+$button-default-hover-color: $color-white;
+
+$button-primary-bg: transparent;
+$button-primary-color: $color-black;
+$button-primary-hover-bg: $color-torch-red;
+$button-primary-hover-color: $color-black;

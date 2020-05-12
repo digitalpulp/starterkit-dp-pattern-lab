@@ -1,0 +1,9 @@
+<a
+  class="{{ (isAlt == true) ? 'button--alt' : 'button' }} {{ (hasIcon == true) ? 'button--svg' : '' }}"
+  href="{{ href }}"
+  {% if aria is not empty %}aria-label="{{ aria }}"{% endif %}
+  {% if target %}target="_blank"{% endif %}>
+
+  {{ cta }} {{ (hasIcon == true) ? svg|raw : "" }}
+
+</a>

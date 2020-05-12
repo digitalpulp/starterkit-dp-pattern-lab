@@ -1,0 +1,56 @@
+{% extends "base-field" %}
+
+{% set name="image" %}
+
+{% if image is not empty %}
+
+  {% set src = image.src %}
+
+  {% set alt = image.alt %}
+
+  {% set caption = image.caption %}
+
+  {% if image.linked %}
+
+    {% set href = href | default(null) %}
+
+    {% set url = url | default(href) %}
+
+    {% if link is not empty %}
+
+      {% set url = url | default(link.url) %}
+
+    {% endif %}
+
+  {% endif %}
+
+{% endif %}
+
+{% block content %}
+
+    {% if caption is empty %}
+
+        {% if url is not empty %}
+
+            <a href="{{ url }}"><img src="{{ src }}" alt="{{ alt }}"{% if title is not empty %} title="{{ title }}"{% endif %}/></a>
+
+        {% else %}
+
+            <img src="{{ src }}" alt="{{ alt }}"{% if title is not empty %} title="{{ title }}"{% endif %}/>
+
+        {% endif %}
+
+    {% else %}
+
+        <figure>
+            {% if url is not empty %}
+                <a href="{{ url }}"><img src="{{ src }}" alt="{{ alt }}"/></a>
+            {% else %}
+                <img src="{{ src }}" alt="{{ alt }}"/>
+            {% endif %}
+            <figcaption><p>{{ caption | raw }}</p></figcaption>
+        </figure>
+
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,21 @@
+%link,
+a {
+  color: $color-link;
+  text-decoration: $link-default-decoration;
+
+  @include hover(null, true) {
+    color: $color-link-hover;
+    text-decoration: $link-default-hover-decoration;
+  }
+}
+
+
+.link {
+  @extend %link;
+}
+
+%link-alt {
+  @include margin(null null null rem(5));
+  display: inline-block;
+  content: '>';
+}

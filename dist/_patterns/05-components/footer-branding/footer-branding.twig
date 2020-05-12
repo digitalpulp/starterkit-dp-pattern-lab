@@ -1,0 +1,16 @@
+{% extends "base-component" %}
+
+{% set name = "footer-branding" %}
+
+{% block content %}
+
+  <a href="#">
+    <span class="logo">
+    {% include "base-logo" %}
+    </span>
+    <span class="logo-stacked">
+    {% include "base-logo-stacked" %}
+    </span>
+  </a>
+
+{% endblock %}

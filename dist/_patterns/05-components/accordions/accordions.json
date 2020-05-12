@@ -1,0 +1,20 @@
+{
+  "accordions" : [
+    {
+      "title": "Accordion 1",
+      "markup": "Lorem ipsum dolor sit amet, cu his scaevola efficiantur intelligebat. Nulla ludus libris cum eu, omnis periculis his et. Non imperdiet velit litora vestibulum condimentum condimentum."
+    },
+    {
+      "title": "Accordion 2",
+      "markup": "Lorem ipsum dolor sit amet, cu his scaevola efficiantur intelligebat. Nulla ludus libris cum eu, omnis periculis his et. Non imperdiet velit litora vestibulum condimentum condimentum."
+    },
+    {
+      "title": "Accordion 3",
+      "markup": "Lorem ipsum dolor sit amet, cu his scaevola efficiantur intelligebat. Nulla ludus libris cum eu, omnis periculis his et. Non imperdiet velit litora vestibulum condimentum condimentum."
+    },
+    {
+      "title": "Accordion 4",
+      "markup": "Lorem ipsum dolor sit amet, cu his scaevola efficiantur intelligebat. Nulla ludus libris cum eu, omnis periculis his et. Non imperdiet velit litora vestibulum condimentum condimentum."
+    }
+  ]
+}

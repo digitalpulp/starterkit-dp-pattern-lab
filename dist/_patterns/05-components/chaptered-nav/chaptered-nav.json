@@ -1,0 +1,12 @@
+{
+  "chapters": [
+    { "title": "Overview", "id": "1" },
+    { "title": "Biography", "id": "2" },
+    { "title": "Fact Sheets", "id": "3" },
+    { "title": "Books & Monographs", "id": "4" },
+    { "title": "Journal Articles", "id": "5" },
+    { "title": "Courses", "id": "6" },
+    { "title": "News", "id": "7" },
+    { "title": "Events", "id": "8" }
+  ]
+}

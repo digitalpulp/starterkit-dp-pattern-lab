@@ -1,0 +1,26 @@
+.cc--chapter {
+  @include maxwidth;
+  margin-bottom: rem(35);
+
+  @include mq($bp768) {
+    margin-bottom: rem(60);
+  }
+
+  @include mq($bp1024) {
+    margin-bottom: rem(75);
+  }
+
+  .cc--hero-profile {
+    padding-bottom: 0;
+  }
+
+  .lc--two-column .content-main & {
+    @include section-title-h2;
+
+    .f--section-title {
+      @include mq($bp1024max) {
+        @include margin(null null rem(15));
+      }
+    }
+  }
+}

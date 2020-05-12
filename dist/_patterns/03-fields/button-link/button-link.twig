@@ -1,0 +1,21 @@
+{% extends 'base-field' %}
+
+{% set name = 'button-link' %}
+
+{% if link is not empty %}
+
+  {% set url = link.url %}
+
+  {% set aria = link.aria %}
+
+  {% set title = link.title %}
+
+  {% set isAlt = link.isAlt %}
+
+{% endif %}
+
+{% block content %}
+
+  <a class="{% if isAlt %}button-alt{% else %}button{% endif %}" href="{{ url }}"{% if aria is not empty %} aria-label="{{ aria }}"{% endif %}>{{ title }}</a>
+
+{% endblock content%}

@@ -1,0 +1,84 @@
+@mixin swiper-controls {
+  display: flex;
+  align-items: center;
+
+  &.hidden {
+    display: none;
+  }
+
+  .swiper-counter {
+    @include font-size(14, 19);
+    @include margin(null rem(10) null null);
+
+    @include mq($bp768) {
+      @include margin(null rem(20) null null);
+    }
+  }
+
+  .button-container {
+    width: rem(90);
+    height: rem(45);
+    position: relative;
+
+    @include mq($bp768) {
+      width: rem(120);
+      height: rem(60);
+    }
+
+    @include mq($bp1024) {
+      width: rem(150);
+      height: rem(75);
+    }
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    @include margin(0);
+    @include hide-text;
+    position: absolute;
+    top: 0;
+    width: rem(45);
+    height: rem(45);
+    background-color: $color-torch-red;
+    background-size: rem(35);
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 5;
+
+    &:focus {
+      z-index: 10;
+    }
+
+    @include hover {
+      background-color: $color-indigo;
+    }
+
+    @include mq($bp768) {
+      width: rem(60);
+      height: rem(60);
+    }
+
+    @include mq($bp1024) {
+      width: rem(75);
+      height: rem(75);
+    }
+  }
+
+  .swiper-button-next {
+    background-image: url('../images/icons/icon-arrowright-white.svg');
+    right: 0;
+
+    @include hover {
+      background-image: url('../images/icons/icon-arrowright-white.svg');
+    }
+  }
+
+  .swiper-button-prev {
+    background-image: url('../images/icons/icon-arrowleft-white.svg');
+    left: 0;
+
+    @include hover {
+      background-image: url('../images/icons/icon-arrowleft-white.svg');
+    }
+  }
+}

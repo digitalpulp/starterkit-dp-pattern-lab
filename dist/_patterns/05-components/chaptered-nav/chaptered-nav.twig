@@ -1,0 +1,29 @@
+{% extends "base-component" %}
+
+{% set name = "chaptered-nav" %}
+
+{% block content %}
+
+  <button type="button" class="dropdown-trigger collapsed">
+
+      <p>Jump to...</p>
+
+      <span></span>
+
+  </button>
+
+  <div class="dropdown-container">
+
+    {% for chapter in chapters %}
+
+    <div class="f--field f--link">
+      <a href="#chapter-{{ chapter.id }}" class="chapter-link">{{ chapter.title }}</a>
+    </div>
+
+      {# include "fields-link" with { title: chapter.title, url: '#' ~ chapter.id } only #}
+
+    {% endfor %}
+
+  </div>
+
+{% endblock content %}

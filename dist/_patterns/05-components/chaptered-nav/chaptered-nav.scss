@@ -1,0 +1,138 @@
+.cc--chaptered-menu {
+  position: relative;
+
+  &.fixed {
+    position: sticky;
+    top: 100px;
+  }
+}
+
+.cc--chaptered-nav {
+  height: 100%;
+
+  .dropdown-container {
+
+    @include mq($bp1024max) {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      left: 0;
+      width: 100%;
+      padding-left: cols(4);
+      background: $color-nero;
+      z-index: 1;
+    }
+
+    @include mq($bp1024) {
+      display: block !important;
+    }
+  }
+
+  &.sticky {
+    .dropdown-container {
+      @include mq($bp1024) {
+        position: sticky;
+        top: 100px;
+      }
+
+      &::after,
+      &::before {
+        display: table;
+        content: '';
+      }
+    }
+  }
+
+  .c--chaptered-nav {
+    @include padding(rem(20) cols(4) rem(20));
+    position: relative;
+    height: 100%;
+    background-color: $color-nero;
+
+    @include mq($bp768) {
+      padding-top: rem(25);
+      padding-bottom: rem(25);
+    }
+
+    @include mq($bp1024) {
+      @include padding(rem(50) 0 rem(75) cols(2, 12));
+      border-right: rem(2) solid $color-torch-red;
+    }
+  }
+
+  .dropdown-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    &.collapsed span {
+      transform: rotate(-180deg);
+    }
+
+    span {
+      display: block;
+      width: rem(50);
+      height: rem(50);
+      transform: rotate(0);
+      border-radius: 50%;
+      background: url('../images/icons/icon-arrowup-white.svg') no-repeat center $color-torch-red;
+      background-size: rem(30) auto;
+      overflow: hidden;
+    }
+
+    p {
+      @extend %font-gotham-ultra;
+      @include font-size(22, 30);
+      margin-bottom: 0;
+      color: $color-white;
+    }
+
+    @include mq($bp1024) {
+      display: none;
+    }
+  }
+
+  .f--link {
+    margin-bottom: rem(25);
+
+    @include mq($bp1024) {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  a.chapter-link {
+    @extend %font-gotham-ultra;
+    @include padding(rem(5) cols(2, 10) rem(7) 0);
+    @include font-size(18, 24);
+    display: block;
+    width: 100%;
+    height: auto;
+    background: none;
+    color: $color-white;
+    text-align: left;
+    text-decoration: none;
+    opacity: .5;
+
+    @include mq($bp1024max) {
+      padding-right: cols(4, 44);
+    }
+
+    &.is-active {
+      border-right: rem(15) solid $color-torch-red;
+      background: none;
+      opacity: 1;
+    }
+
+    @include hover(null, true) {
+      border-right: rem(15) solid $color-torch-red;
+      background: none;
+      color: $color-white;
+      text-decoration: none;
+      opacity: 1;
+    }
+  }
+}

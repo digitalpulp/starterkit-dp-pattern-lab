@@ -1,0 +1,8 @@
+{
+  "title": "Filter Form",
+  "items": [
+    { "type": "text" },
+    { "type": "select" },
+    { "type": "submit", "title": "Submit" }
+  ]
+}

@@ -1,0 +1,99 @@
+{% extends "base-component" %}
+
+{% set name = "form-items" %}
+
+{% set container_element = 'div' %}
+
+{% block content %}
+
+  <form class="form-items-content">
+
+    <div class="fields-container">
+
+      {% for item in items %}
+
+        {% if item.type == "select" %}
+
+          {% include "base-input-select" with { label: item.label, options: item.options } only %}
+
+        {% elseif item.type == "date" %}
+
+          {% include "base-input-date" with { label: item.label } only %}
+
+        {% elseif item.type == "text" %}
+
+          {% include "base-input-text" with { label: item.label, placeholder: item.placeholder } only %}
+
+        {% endif %}
+
+      {% endfor %}
+
+    </div>
+
+    <div class="textarea-container">
+
+      {% for item in items %}
+
+        {% if item.type == "textarea" %}
+
+          {% include "base-input-textarea" with { label: item.label, placeholder: item.placeholder } only %}
+
+        {% endif %}
+
+      {% endfor %}
+
+    </div>
+
+    <div class="boxes-container">
+
+      <div class="checkbox-container inner">
+
+        {% for item in items %}
+
+          {% if item.type == "checkbox" %}
+
+            {% include "base-input-checkbox" with { title: item.title, label: item.label, name: item.name, value: item.value, id: item.id } only %}
+
+          {% endif %}
+
+        {% endfor %}
+
+      </div>
+
+      <div class="radio-container inner">
+
+        {% for item in items %}
+
+          {% if item.type == "radio" %}
+
+            {% include "base-input-radio" with { title: item.title, label: item.label, namevalue: item.namevalue, value: item.value, id: item.id } only %}
+
+          {% endif %}
+
+        {% endfor %}
+
+      </div>
+
+    </div>
+
+    <div class="button-container">
+
+      {% for item in items %}
+
+        {% if item.type == "button" %}
+
+          {% include "base-input-button" with { value: item.value } only %}
+
+        {% elseif item.type == "submit" %}
+
+          {% include "base-input-submit" with { value: item.value } only %}
+
+        {% endif %}
+
+      {% endfor %}
+
+    </div>
+
+  </form>
+
+{% endblock %}

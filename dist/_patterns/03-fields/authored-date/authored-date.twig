@@ -1,0 +1,15 @@
+{% extends "base-field" %}
+
+{% set name = "authored-date" %}
+
+{% block content %}
+
+  <img src="{{ image }}" alt="Author Profile Image" class="rounded-image">
+  <div class="text-container">
+    <p>by {{ fullname }}</p>
+    <time datetime="{{ timestamp|date('c') }}">
+      <span class="date">{{ date|date('F j, Y') }}</span>
+    </time>
+  </div>
+
+{% endblock %}

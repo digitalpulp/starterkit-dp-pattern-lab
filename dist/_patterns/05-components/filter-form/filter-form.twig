@@ -1,0 +1,63 @@
+{% extends "base-component" %}
+
+{% set name = "filter-form" %}
+{% set container_element = 'div' %}
+
+{% block content %}
+
+  {% if title is not empty %}
+    <div class="filter-form-header">
+        <h2>{{ title }}</h2>
+        <button type="button">
+          <svg class="closed" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 35 35" enable-background="new 0 0 35 35" xml:space="preserve"><path fill-rule="evenodd" clip-rule="evenodd" fill="#fff" d="M30,9v3H5V9H30z M25,16v3H10v-3H25z M20,23v3h-5v-3H20z"/></svg>
+          <svg class="opened" width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="⚡-Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="icon/close" transform="translate(-8.000000, -8.000000)" fill="#fff"><polygon id="close" points="17.987514 15.5126402 25.4719587 8.02819546 27.9468324 10.5030692 20.4623877 17.987514 27.9468324 25.4719587 25.4719587 27.9468324 17.987514 20.4623877 10.5030692 27.9468324 8.02819546 25.4719587 15.5126402 17.987514 8.02819546 10.5030692 10.5030692 8.02819546"></polygon></g></g></svg>
+        </button>
+    </div>
+  {% endif %}
+
+  <form class="form-filter-content">
+    <div class="fields-container">
+      {% for item in items %}
+
+        {% if item.type == "select" %}
+
+          {% include "base-input-select" with { label: item.label, options: item.options } only %}
+
+        {% elseif item.type == "date" %}
+
+          {% include "base-input-date" with { label: item.label } only %}
+
+        {% elseif item.type == "text" %}
+
+          {% include "base-input-text" with { label: item.label, placeholder: item.placeholder } only %}
+
+        {% elseif item.type == "checkbox" %}
+
+            {% include "base-input-checkbox" with { title: item.title, label: item.label } only %}
+
+        {% endif %}
+
+      {% endfor %}
+    </div>
+
+    <div class="button-container">
+
+      {% for item in items %}
+
+        {% if item.type == "button" %}
+
+          {% include "base-input-button" with { value: item.value } only %}
+
+        {% elseif item.type == "submit" %}
+
+          {% include "base-input-submit" with { value: item.value } only %}
+
+        {% endif %}
+
+      {% endfor %}
+
+    </div>
+
+  </form>
+
+{% endblock %}

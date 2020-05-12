@@ -1,0 +1,19 @@
+.fi--form-item {
+
+  &:not(:last-child) {
+    @include margin(null null rem(20) null);
+  }
+
+  > label {
+    @extend %font-gotham-black;
+    @include font-size(14, 16);
+    @include margin(null null rem(10));
+    display: block;
+    color: $color-black;
+
+    @include mq($bp768) {
+      @include font-size(16, 21);
+      @include margin(null null rem(20));
+    }
+  }
+}

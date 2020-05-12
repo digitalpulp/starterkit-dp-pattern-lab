@@ -1,0 +1,70 @@
+@mixin button() {
+  @extend %font-gotham-ultra;
+  @include font-size(16, 16);
+  @include padding(null rem(20));
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  text-align: center;
+  width: 100%;
+  height: rem(60);
+  border-radius: 0;
+  white-space: normal;
+  color: $button-default-color;
+  background-color: $button-default-bg;
+  transition: background-color $transition-duration-fast $transition-easing-default;
+  -webkit-appearance: none;
+  appearance: none;
+
+  @include hover {
+    transition: background-color $transition-duration-fast $transition-easing-default, color $transition-duration-fast $transition-easing-default;
+    background-color: $button-default-hover-bg;
+    color: $button-default-hover-color;
+    text-decoration: none;
+  }
+}
+
+@mixin button-alt($white: false) {
+  @extend %font-gotham-condensed-bold;
+  @include font-size(22, 22);
+  @include padding(null null rem(9));
+  position: relative;
+  display: inline-flex;
+  text-transform: uppercase;
+  color: $color-torch-red;
+  text-decoration: none;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: rem(2);
+    background-color: $color-torch-red;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+
+  @include hover {
+    text-decoration: none;
+    color: $color-indigo;
+
+    &::after {
+      background-color: $color-indigo;
+    }
+  }
+
+  @if $white {
+    color: $color-white;
+
+    @include hover {
+      color: $color-white;
+
+      &::after {
+        background-color: $color-white;
+      }
+    }
+  }
+}

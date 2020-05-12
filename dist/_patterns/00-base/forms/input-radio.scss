@@ -1,0 +1,68 @@
+.fi--form-item {
+
+  .radio-wrapper {
+    position: relative;
+    padding: 20px 0 20px 40px;
+    text-align: left;
+
+    input[type='radio'] {
+      position: absolute;
+      top: 0;
+      left: -9999px;
+
+      &:focus + label::before {
+        html[data-whatinput='keyboard'] & {
+          outline: 3px solid $color-eastern-blue;
+        }
+      }
+
+      &:checked + label {
+        @extend %font-gotham-black;
+        color: $color-torch-red;
+
+        &::before {
+          border: 2px solid $color-torch-red;
+        }
+
+        &::after {
+          transform: translate3d(0, 0, 0);
+          opacity: 1;
+        }
+      }
+    }
+
+    label {
+      @extend %font-gotham-book;
+      @include margin(null null 0);
+      cursor: pointer;
+
+      &::before,
+      &::after {
+        position: absolute;
+        top: 50%;
+        content: '';
+      }
+
+      &::before {
+        left: 1px;
+        width: 26px;
+        height: 26px;
+        margin: -15px 0 0;
+        border: 1px solid $color-empress;
+        border-radius: 50%;
+        background-color: $color-white;
+      }
+
+      &::after {
+        left: 7px;
+        width: 14px;
+        height: 14px;
+        margin: -9px 0 0;
+        transform: translate3d(-40px, 0, 0) scale(0.5);
+        border-radius: 50%;
+        background-color: $color-torch-red;
+        opacity: 0;
+      }
+    }
+  }
+}

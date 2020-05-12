@@ -1,0 +1,29 @@
+{% extends "base-form-item" %}
+
+{% block content %}
+
+  {% if label %}
+    <label
+      for="{{ name|default("text") }}"
+    >
+      {{ label }}{% if required %} *{% endif %}
+    </label>
+  {% endif %}
+  <div class="select-wrap">
+  <select
+    name="{{ name|default("select") }}"
+    id="{{ name|default("select") }}"
+    {% if disabled %}disabled="disabled"{% endif %}
+    {% if required %}required="required"{% endif %}
+  >
+    {% for option in options %}
+
+      <option value="{{ option.value }}">{{ option.label }}</option>
+
+    {% endfor %}
+
+  </select>
+  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="7" viewBox="0 0 14 7"><g><g transform="rotate(180 7 3.5)"><path fill="#fff" d="M6.857.714L.43 6.43h12.857z"/></g></g></svg>
+
+  </div>
+{% endblock %}

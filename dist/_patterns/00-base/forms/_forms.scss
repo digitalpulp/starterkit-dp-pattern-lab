@@ -1,0 +1,12 @@
+%input-style {
+  @include padding(null rem(10));
+  @include font-size(16, 50);
+  position: relative;
+  width: 100%;
+  height: rem(50);
+  border: 1px solid $color-very-light-grey;
+  border-radius: 0;
+  background-color: $color-white;
+  color: $color-black;
+  appearance: none;
+}

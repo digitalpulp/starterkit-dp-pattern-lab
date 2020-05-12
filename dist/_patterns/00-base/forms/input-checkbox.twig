@@ -1,0 +1,32 @@
+{% extends "base-form-item" %}
+
+{% block content %}
+  {% if title %}
+    <label
+      for="{{ name|default("text") }}"
+    >
+      {{ title }}{% if required %} *{% endif %}
+    </label>
+  {% endif %}
+
+  <div class="checkbox-wrapper">
+    <input
+    type="checkbox"
+    id="{{ name|default("checkbox") }}"
+    name="{{ name|default("checkbox") }}"
+    value="{{ value|default('Car') }}"
+    {% if disabled %}disabled="disabled"{% endif %}
+    >
+
+
+    {% if label %}
+    <label
+      for="{{ name|default("checkbox") }}"
+    >
+    {{ label|default('Check') }}{% if required %} *{% endif %}
+    </label>
+    {% endif %}
+  </div>
+
+{% endblock %}
+

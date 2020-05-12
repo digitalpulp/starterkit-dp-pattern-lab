@@ -1,0 +1,12 @@
+{% extends "base-form-item" %}
+
+{% set name = 'form-item-radio' %}
+
+{% block content %}
+
+  <div class="radio-wrapper">
+    <input type="radio" name="{{ namevalue|default('gender') }}" id="{{ id|default('gender') }}" value="{{ value|default('male') }}" checked>
+    <label for="{{ id|default('gender') }}">{{ text|default('Male') }}</label>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+.cc--back-to-top {
+  .f--back {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: rem(35);
+
+    &:not(.ally-focus-within) {
+      @include mq($bp1024) {
+        @include visuallyhidden;
+      }
+    }
+
+    &::after {
+      display: block;
+      flex: 1 0 auto;
+      height: rem(2);
+      background-color: $color-charcoal;
+      content: '';
+    }
+
+    a {
+      @extend %font-gotham-black;
+      @include font-size(14, 14);
+      color: $color-charcoal;
+      text-decoration: none;
+
+      &:hover {
+        color: $color-charcoal;
+        text-decoration: none;
+      }
+    }
+
+    svg {
+      @include margin(null rem(15) rem(3));
+    }
+  }
+}

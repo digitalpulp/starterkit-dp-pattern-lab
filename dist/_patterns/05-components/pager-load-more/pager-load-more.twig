@@ -1,0 +1,12 @@
+{% extends "base-component" %}
+
+{% set name = "pager-load-more" %}
+
+{% block content %}
+
+  {% include "fields-link" with { link: {
+    title: title,
+    url: url
+  } } %}
+
+{% endblock content %}

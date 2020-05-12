@@ -1,0 +1,23 @@
+> .cc--component-container.narrow {
+  @include mq($bp1024) {
+    // FIXME:
+    @include maxwidth(cols(12, 24));
+  }
+}
+
+> .cc--component-container.maxwidth {
+  @include mq($bp1024) {
+    // FIXME:
+    @include maxwidth;
+  }
+}
+
+> .cc--component-container.fullbackground {
+  > .c--component {
+    @include mq($bp1024) {
+      // FIXME:
+      @include maxwidth;
+    }
+  }
+}
+

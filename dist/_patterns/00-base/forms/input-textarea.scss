@@ -1,0 +1,19 @@
+.fi--form-item {
+  textarea {
+    @extend %font-gotham-book;
+    @include font-size(16, 19);
+    @include padding(rem(10));
+    width: 100%;
+    height: rem(150);
+    border-color: $color-very-light-grey;
+    background-color: transparent;
+
+    @include mq($bp768) {
+      height: rem(200);
+    }
+
+    @include placeholder {
+      color: $color-input-placeholder;
+    }
+  }
+}

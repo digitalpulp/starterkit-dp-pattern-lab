@@ -1,0 +1,88 @@
+.cc--accordions {
+  .c--accordions {
+    .accordion-item {
+      &:not(:last-child) {
+        @include margin(null null rem(20));
+
+        @include mq($bp1024) {
+          @include margin(null null rem(35));
+        }
+      }
+    }
+
+    .accordion {
+      h3 {
+        .accordion-trigger {
+          @extend %font-gotham-ultra;
+          @include font-size(18, 28);
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          color: $color-torch-red;
+          text-align: left;
+
+          @include mq($bp768) {
+            @include font-size(24, 34);
+          }
+
+          &::after {
+            display: block;
+            flex-shrink: 0;
+            width: rem(35);
+            height: rem(35);
+            transition: transform $transition-duration-default $transition-easing-default;
+            background: url('../images/icons/icon-arrowdown-red.svg') no-repeat center center / 100%;
+            content: '';
+          }
+
+          &.open {
+            &::after {
+              transform: rotate(180deg);
+              transition: transform $transition-duration-default $transition-easing-default;
+            }
+          }
+        }
+      }
+
+      .accordion-panel {
+        @include padding(rem(15) null rem(0));
+        @include font-size(14, 24);
+        display: none;
+        color: $color-charcoal;
+
+
+        @include mq($bp768) {
+          @include padding(rem(20) null rem(10) null);
+        }
+
+        @include mq($bp1024) {
+          @include font-size(16, 28);
+        }
+
+        p {
+          @include font-size(16, 30);
+          color: $color-charcoal;
+        }
+      }
+    }
+  }
+
+  .tc--basic & {
+    @include margin(null null rem(25) null);
+
+    .c--accordions {
+      .accordion {
+        h3 {
+          .accordion-trigger {
+            justify-content: flex-start;
+            width: auto;
+
+            &::after {
+              margin-left: rem(25);
+            }
+          }
+        }
+      }
+    }
+  }
+}

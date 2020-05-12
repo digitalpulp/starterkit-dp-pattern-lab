@@ -1,0 +1,42 @@
+{% extends "base-component" %}
+
+{% set name="accordions" %}
+
+{% set container_element="section" %}
+
+{% set container_aria_label="Detail Information" %}
+
+{% set instanceId = instanceId | default(1) %}
+
+{% set accordions = accordions | default(default.accordions.accordions) %}
+
+{% block content %}
+
+  <!-- See https://w3c.github.io/aria-practices/examples/accordion/accordion.html -->
+
+  <div class="accordion">
+    {% for accordion in accordions %}
+
+      <div class="accordion-item">
+        <h3>
+
+          <button type="button" class="accordion-trigger" id="heading-{{ instanceId }}-{{ loop.index }}" aria-controls="section-{{ instanceId }}-{{ loop.index }}" aria-expanded="false" aria-disabled="false">
+
+            {{ accordion.title }}
+
+          </button>
+
+        </h3>
+
+        <div id="section-{{ instanceId }}-{{ loop.index }}" role="region" aria-labelledby="heading-{{ instanceId }}-{{ loop.index }}" class="accordion-panel">
+
+          {{ accordion.markup }}
+
+        </div>
+      </div>
+
+    {% endfor %}
+  </div>
+
+{% endblock %}
+

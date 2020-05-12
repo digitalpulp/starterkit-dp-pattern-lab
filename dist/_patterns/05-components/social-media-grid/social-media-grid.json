@@ -1,0 +1,6 @@
+{
+  "title" : "Follow us @TKTKTWitter",
+  "feed_id" : "tktktwitter",
+  "feed_limit": "3",
+  "char_limit": "250"
+}

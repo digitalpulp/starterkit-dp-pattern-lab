@@ -1,0 +1,25 @@
+{% extends "base-component" %}
+
+{% set name = "footer" %}
+
+{% set container_element = 'div' %}
+
+{% block content %}
+
+  <div class="content-top">
+
+    {% include "components-footer-branding" %}
+
+  </div>
+
+  <div class="content-bottom">
+
+    {% include "components-footer-menu" with { menu: footerMenu } only %}
+
+    {% include "components-footer-address" %}
+
+    {% include "components-footer-social" with { label: "Follow Us" } %}
+
+  </div>
+
+{% endblock %}

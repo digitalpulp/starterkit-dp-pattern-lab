@@ -1,0 +1,173 @@
+.cc--wysiwyg {
+  @include maxwidth;
+
+  .c--wysiwyg {
+    @include padding(null cols(18) rem(50) cols(4));
+
+    @include mq($bp1024max) {
+      padding-right: cols(4);
+    }
+
+    @include mq($bp768max) {
+      padding-bottom: rem(35);
+    }
+  }
+}
+
+.c--component {
+  .f--wysiwyg {
+    @include clearfix;
+
+    p {
+      @extend %font-gotham-book;
+      @include font-size(16, 30);
+      color: $color-charcoal;
+
+      b,
+      strong {
+        @extend %font-gotham-black;
+      }
+
+      em {
+        @extend %font-gotham-book-italic;
+      }
+
+      @include mq($bp768) {
+        @include font-size(20, 40);
+      }
+    }
+
+    h2 {
+      @include font-size(24, 30);
+      margin-bottom: rem(25);
+
+      @include mq($bp768) {
+        @include font-size(30, 36);
+        margin-bottom: rem(35);
+      }
+
+      @include mq($bp1024) {
+        @include font-size(40, 42);
+      }
+    }
+
+    h3 {
+      @include font-size(22, 30);
+      margin-bottom: rem(18);
+
+      @include mq($bp768) {
+        @include font-size(26, 32);
+      }
+
+      @include mq($bp1024) {
+        @include font-size(32, 40);
+      }
+    }
+
+    h4 {
+      @include font-size(18, 24);
+      margin-bottom: rem(20);
+
+      @include mq($bp768) {
+        @include font-size(20, 26);
+      }
+    }
+
+    ol,
+    ul {
+      @include padding(null null null rem(25));
+      list-style-position: outside !important;
+
+      li {
+        @extend %font-gotham-book;
+        @include font-size(16, 30);
+        color: $color-charcoal;
+
+        @include mq($bp768) {
+          @include font-size(20, 40);
+        }
+      }
+    }
+
+    thead {
+      border-bottom: 1px solid $color-torch-red;
+
+      th {
+        @extend %font-gotham-condensed-bold;
+        @include padding(0 0 rem(14));
+        @include font-size(20, 24);
+        color: $color-torch-red;
+        letter-spacing: rem(0.55);
+        text-transform: uppercase;
+
+        @include mq($bp768) {
+          @include padding(0 0 rem(20));
+          @include font-size(24, 24);
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid $color-very-light-grey;
+        background: transparent;
+
+        &:last-child {
+          border-bottom: 0;
+        }
+      }
+
+      td,
+      th {
+        @include padding(rem(25) 0);
+        width: 50%;
+
+        &,
+        p {
+          @include font-size(12, 22);
+
+          @include mq($bp768) {
+            @include font-size(16, 30);
+          }
+        }
+      }
+
+      td,
+      td p {
+        @extend %font-gotham-book;
+        color: $color-charcoal;
+      }
+
+      th {
+        @extend %font-gotham-black;
+        padding-right: rem(12);
+        color: $color-nero;
+
+        @include mq($bp768) {
+          padding-right: rem(32);
+        }
+
+        @include mq($bp1024) {
+          padding-right: rem(50);
+        }
+      }
+    }
+
+    figure.align-left,
+    img.align-left {
+      @include margin(null rem(20) rem(20) 0);
+      float: left;
+    }
+
+    figure.align-right,
+    img.align-right {
+      @include margin(null 0 rem(20) rem(20));
+      float: right;
+    }
+
+    img {
+      width: auto;
+      max-width: 100%;
+    }
+  }
+}

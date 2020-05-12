@@ -1,0 +1,9 @@
+{% extends 'base-field' %}
+
+{% set name = 'attribution' %}
+
+{% block content %}
+
+  {{ text | raw }} {% if title is not empty %}<span class="title">{{ title }}</span>{% endif %}
+
+{% endblock content %}

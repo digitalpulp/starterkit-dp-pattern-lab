@@ -1,0 +1,11 @@
+{% extends "base-component" %}
+
+{% set name="wysiwyg" %}
+{% set container_element = 'section' %}
+
+
+{% block content %}
+
+  {% include "fields-wysiwyg" with { markup: markup } only %}
+
+{% endblock %}

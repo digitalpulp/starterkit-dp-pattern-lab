@@ -1,0 +1,31 @@
+{% extends "base-component" %}
+
+{% set name = "chapter" %}
+
+{% block content %}
+
+  {# this nav anchor is above the title, so that the title is still visible after navigating to it: #}
+
+  {% if id is not empty %}
+
+    <span id="chapter-{{ id }}" class="chaptered-nav-anchor"></span>
+
+  {% endif %}
+
+  {% if title is not empty %}
+
+    {% include "fields-section-title" with { title: title } only %}
+
+  {% endif %}
+
+  {% include "base-component-list" with { noWrap: true } %}
+
+  {% if toTop %}
+
+    <div class="f--back">
+      <a href="#" class="scrollup">Back to Top<svg xmlns="http://www.w3.org/2000/svg" width="11" height="5" viewBox="0 0 11 5"><g><g transform="rotate(180 5.5 2)"><path fill="#4a4a4a" d="M5.286 4.429l5.143-4.572H.143z"/></g></g></svg></a>
+    </div>
+
+  {% endif %}
+
+{% endblock content %}

@@ -1,0 +1,8 @@
+.f--description {
+  p {
+    @extend %font-gotham-book;
+    @include font-size(16, 30);
+    color: $color-black;
+    text-align: left;
+  }
+}

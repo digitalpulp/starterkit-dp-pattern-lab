@@ -1,0 +1,60 @@
+{% extends "base-component" %}
+
+{% set name = "pager" %}
+
+{% block content %}
+
+<nav class="pager" role="navigation">
+  <ul class="pager__items js-pager__items">
+
+    {% if previous %}
+
+      <li class="pager__item pager__item--previous ally-focus-within">
+        <a href="{{ link.href }}" title="Go to previous page" rel="prev">
+          <span class="visually-hidden">Previous page</span>
+          <span aria-hidden="true">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 11.7 20" enable-background="new 0 0 11.7 20" xml:space="preserve">
+            <path class="arrow-left" d="M3.4,10l8.3,8.3L10,20L0,10L10,0l1.7,1.7L3.4,10z"></path>
+            </svg>
+          </span>
+        </a>
+      </li>
+
+    {% endif %}
+
+    {% for link in links %}
+
+      <li class="pager__item {% if loop.index == curPage %}is-active{% endif %}">
+
+        {% if link.nolink == true %}
+
+          {{ link.cta }}
+
+        {% else %}
+
+          <a href="{{ link.href }}" aria-label="View page {{ loop.index }}">{{ link.cta }}</a>
+
+        {% endif %}
+
+      </li>
+
+    {% endfor %}
+
+    {% if next %}
+
+      <li class="pager__item pager__item--next" aria-label="View page 1" }}>
+          <a href="{{ link.href }}" rel="next" title="Go to next page">
+              <span class="visually-hidden">Next page</span>
+              <span aria-hidden="true">
+                  <svg enable-background="new 0 0 11.7 20" version="1.1" viewbox="0 0 11.7 20" x="0px" xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" y="0px">
+                      <path class="arrow-right" d="M8.3,10L0,1.7L1.7,0l10,10l-10,10L0,18.3L8.3,10z"></path>
+                  </svg>
+              </span>
+          </a>
+      </li>
+
+    {% endif %}
+
+  </ul>
+</nav>
+{% endblock %}

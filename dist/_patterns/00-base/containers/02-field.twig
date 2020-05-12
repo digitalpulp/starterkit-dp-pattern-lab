@@ -1,0 +1,17 @@
+{% if field_variant is iterable %}
+    {% set variant_processed = field_variant | join(' ') %}
+{% else %}
+    {% set variant_processed = field_variant %}
+{% endif %}
+
+{%
+  set container_element = container_element|default('div')
+%}
+
+<{{ container_element }} class="f--field f--{{ name }}{{ (variant_processed) ? (' ' ~ variant_processed) : '' }}">
+
+    {% block content %}
+
+    {% endblock %}
+
+</{{ container_element }}><!-- f--field f--{{ name }} -->

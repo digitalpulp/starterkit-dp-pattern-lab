@@ -1,0 +1,7 @@
+{
+  "image": {
+    "src": "\/images\/16_9_1600x900.png",
+    "alt": "Captioned Image"
+  },
+  "caption": "Full-width image block with optional caption. Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+}

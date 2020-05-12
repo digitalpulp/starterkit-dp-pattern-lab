@@ -1,0 +1,44 @@
+<li {% if item.activeTrail %} class="menu-item menu-item--active-trail" {% else %} class="menu-item" {% endif %}>
+
+  {% if item.submenu|length %}
+    <div class="utility-button-wrapper">
+
+      <button type="button" class="utility-button information-for-toggle" aria-expanded="false" aria-haspopup="true">
+        {{ item.title|raw }}
+
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+          y="0px" viewBox="0 0 35 35" enable-background="new 0 0 35 35" xml:space="preserve">
+        <polygon fill-rule="evenodd" clip-rule="evenodd" points="17.5,23 26.5,15 8.5,15 "/>
+        </svg>
+      </button>
+
+  {% else %}
+
+    <a href="{{ item.href }}"{% if item.offsite %} target="_blank" class="offsite"{% endif %}>
+
+        {% if item.label is not empty %}
+
+            <span class="label">{{ item.label }}</span>
+
+        {% endif %}
+
+      {{ item.title }}
+
+    </a>
+
+  {% endif %}
+
+  {% if item.submenu|length %}
+
+      <ul class="submenu" aria-hidden="true">
+          {% for subitem in item.submenu %}
+
+              {% include "base-menu-item" with { item: subitem } %}
+
+          {% endfor %}
+      </ul>
+
+    </div> <!-- end of utility-button-wrapper -->
+  {% endif %}
+
+</li>

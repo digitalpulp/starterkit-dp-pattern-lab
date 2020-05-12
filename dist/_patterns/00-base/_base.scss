@@ -1,0 +1,271 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  @extend %font-gotham-book;
+  color: $color-text-color;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  line-height: 1.1;
+}
+
+p {
+  margin-top: 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+ul,
+ol {
+  margin-top: 0;
+
+  ul,
+  ol {
+    margin-bottom: 0;
+  }
+}
+
+ul {
+  list-style-type: disc;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+svg {
+  path,
+  polygon,
+  line,
+  rect,
+  ellipse,
+  circle {
+    transition: fill $transition-duration-fast $transition-easing-default;
+
+    @include hover {
+      transition: fill $transition-duration-fast $transition-easing-default;
+    }
+  }
+}
+
+nav {
+  ul,
+  ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}
+
+dl {
+  margin-top: 0;
+}
+
+dd {
+  margin: 0;
+}
+
+address {
+  font-style: normal;
+}
+
+form {
+  margin: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+textarea {
+  resize: vertical;
+}
+
+button {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+}
+
+button,
+[type='button'],
+[type='reset'],
+[type='submit'],
+.button-reset {
+  cursor: pointer;
+}
+
+[disabled] {
+  cursor: default;
+}
+
+iframe {
+  border: 0;
+}
+
+section {
+  &.two-cols {
+    @include margin(rem(40) null);
+
+    @include mq($bp768) {
+      column-gap: rem(40);
+      column-count: 2;
+    }
+
+    img {
+      margin-bottom: rem(15);
+      float: left;
+    }
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+
+  tr {
+    td,
+    th {
+      @include padding(rem(10) cols(1, 40));
+      @include font-size(16, 26);
+      text-align: left;
+      vertical-align: top;
+
+      @include mq($bp768) {
+        @include padding(null cols(1));
+        @include font-size(18, 26);
+      }
+    }
+
+    &:nth-child(2n) {
+      background: $color-white-smoke;
+    }
+  }
+
+  &.two-col {
+    tr {
+      th {
+        &:nth-child(1) {
+          width: 40%;
+          font-weight: 600;
+        }
+      }
+
+      td {
+        &:nth-child(2) {
+          color: $color-black;
+        }
+      }
+    }
+  }
+}
+
+th,
+td {
+  padding: 0;
+}
+
+th {
+  font-weight: normal;
+}
+
+[tabindex='-1']:focus {
+  outline: none !important;
+}
+
+
+
+//==========================================================================
+//   Print styles.
+//   https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css
+//   ==========================================================================
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: transparent !important;
+    color: #000 !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]::after {
+    content: ' (' attr(href) ')';
+  }
+
+  abbr[title]::after {
+    content: ' (' attr(title) ')';
+  }
+
+  a[href^='#']::after,
+  a[href^='javascript:']::after {
+    content: '';
+  }
+
+  pre {
+    white-space: pre-wrap !important;
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
